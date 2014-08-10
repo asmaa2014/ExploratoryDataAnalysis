@@ -23,7 +23,7 @@ png(file="plot3.png")
 df1 = transform (df, Date = strptime(paste(df$Date, df$Time), format="%d/%m/%Y %H:%M:%S"))
 
 #Assign margins
-par(mar=c(10,6,4,4))
+#par(mar=c(10,6,4,4))
 
 #Draw plot
 
@@ -31,12 +31,10 @@ par(mar=c(10,6,4,4))
 with(df1, plot(Date, Sub_metering_1, type="l", xlab="", ylab="Energy Sub Metering"))
 
 #Sub_metering_2
-par(new=TRUE)
-with(df1, plot(Date, Sub_metering_2, type="l", col="Red", ylim=range(c(0, 40)), axes=FALSE, xlab="", ylab=""))
+with(df1, lines(Date, Sub_metering_2, type="l", col="Red", ylim=range(c(0, 40))))
 
 #Sub_metering_3
-par(new=TRUE)
-with(df1, plot(Date, Sub_metering_3, type="l", col="Blue", ylim=range(c(0, 40)), axes=FALSE, xlab="", ylab=""))
+with(df1, lines(Date, Sub_metering_3, type="l", col="Blue", ylim=range(c(0, 40))))
 
 #legend
 legend("topright", lwd=2, col=c("Black", "Red", "Blue"), legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
